@@ -384,7 +384,7 @@ class GUMP
         foreach ($ruleset as $field => $rules) {
 
             //$rules = explode('|', $rules);
-            $rules = preg_split('/\|(?![^\|]+\))/', $rules);
+            $rules = preg_split('/(?<!\\\)\|(?![^\|]+\))/', $rules);
 
             $lookFor = array('required_file', 'required');
 

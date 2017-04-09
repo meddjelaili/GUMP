@@ -383,7 +383,8 @@ class GUMP
 
         foreach ($ruleset as $field => $rules) {
 
-            $rules = explode('|', $rules);
+            //$rules = explode('|', $rules);
+            $rules = preg_split('/\|(?![^\|]+\))/', $rules);
 
             $lookFor = array('required_file', 'required');
 
@@ -395,7 +396,8 @@ class GUMP
 
                     // Check if we have rule parameters
                     if (strstr($rule, ',') !== false) {
-                        $rule   = explode(',', $rule);
+                        //$rule   = explode(',', $rule);
+                        $rule   = preg_split('/(?<!\\\),/', $rule);
                         $method = 'validate_'.$rule[0];
                         $param  = $rule[1];
                         $rule   = $rule[0];
